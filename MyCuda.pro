@@ -126,9 +126,9 @@ LIBS += -lcudart \
 
 DEPENDPATH += .
 
-OTHER_FILES += cuda_test.cu
+OTHER_FILES +=
 
-CUDA_SOURCES += cuda_test.cu
+CUDA_SOURCES += cudatest.cu
 
 CUDA_SDK = "/usr/local/cuda"   # Path to cuda SDK install
 CUDA_DIR = "/usr/local/cuda"            # Path to cuda toolkit install
@@ -166,4 +166,7 @@ else {
 
 
 DISTFILES += \
-    cuda_test.cu
+    cudatest.cu
+
+HEADERS += \
+    cudatest.h

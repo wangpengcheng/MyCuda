@@ -5,10 +5,14 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <caffe/blob.hpp>
+#include "cudatest.h"
 using namespace std;
 using namespace cv;
 using namespace caffe;
 void cv_test();
+extern "C"
+void runCudaPart();
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -20,6 +24,7 @@ int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty())
         return -1;
     cv_test();
+    runCudaPart();
     return app.exec();
 }
 
