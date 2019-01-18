@@ -29,64 +29,88 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 #set opencv
-INCLUDEPATH += /usr/local/opencv320/include \
-/usr/local/include/opencv \
-/usr/local/include/opencv2
+OPENCV_ROOT="/usr/include" #/usr/local/opencv320/
+#INCLUDEPATH += /usr/local/opencv320/include \
+#/usr/local/include/opencv \
+#/usr/local/include/opencv2
+INCLUDEPATH += $$OPENCV_ROOT \
+$$OPENCV_ROOT/opencv \
+$$OPENCV_ROOT/opencv2
 
-LIBS += /usr/local/lib/libopencv_aruco.so \
-/usr/local/lib/libopencv_bgsegm.so \
-/usr/local/lib/libopencv_bioinspired.so \
-/usr/local/lib/libopencv_calib3d.so \
-/usr/local/lib/libopencv_ccalib.so \
-/usr/local/lib/libopencv_core.so \
-/usr/local/lib/libopencv_datasets.so \
-/usr/local/lib/libopencv_dnn.so \
-/usr/local/lib/libopencv_dpm.so \
-/usr/local/lib/libopencv_face.so \
-/usr/local/lib/libopencv_features2d.so \
-/usr/local/lib/libopencv_flann.so \
-/usr/local/lib/libopencv_freetype.so \
-/usr/local/lib/libopencv_fuzzy.so \
-/usr/local/lib/libopencv_highgui.so \
-/usr/local/lib/libopencv_imgcodecs.so \
-/usr/local/lib/libopencv_imgproc.so \
-/usr/local/lib/libopencv_ml.so \
-/usr/local/lib/libopencv_objdetect.so \
-/usr/local/lib/libopencv_optflow.so \
-/usr/local/lib/libopencv_phase_unwrapping.so \
-/usr/local/lib/libopencv_photo.so \
-/usr/local/lib/libopencv_plot.so \
-/usr/local/lib/libopencv_reg.so \
-/usr/local/lib/libopencv_rgbd.so \
-/usr/local/lib/libopencv_saliency.so \
-/usr/local/lib/libopencv_shape.so \
-/usr/local/lib/libopencv_stereo.so \
-/usr/local/lib/libopencv_stitching.so \
-/usr/local/lib/libopencv_structured_light.so \
-/usr/local/lib/libopencv_superres.so \
-/usr/local/lib/libopencv_surface_matching.so \
-/usr/local/lib/libopencv_text.so \
-/usr/local/lib/libopencv_tracking.so \
-/usr/local/lib/libopencv_video.so \
-/usr/local/lib/libopencv_videoio.so \
-/usr/local/lib/libopencv_videostab.so \
-/usr/local/lib/libopencv_xfeatures2d.so \
-/usr/local/lib/libopencv_ximgproc.so \
-/usr/local/lib/libopencv_xobjdetect.so \
-/usr/local/lib/libopencv_xphoto.so
+OPENCV_LIB_DIR="/usr/lib/x86_64-linux-gnu" #/usr/local/lib/
+#LIBS += $$OPENCV_LIB_DIR/libopencv_aruco.so \
+#$$OPENCV_LIB_DIR/libopencv_bgsegm.so \
+#$$OPENCV_LIB_DIR/libopencv_bioinspired.so \
+#$$OPENCV_LIB_DIR/libopencv_calib3d.so \
+#$$OPENCV_LIB_DIR/libopencv_ccalib.so \
+#$$OPENCV_LIB_DIR/libopencv_core.so \
+#$$OPENCV_LIB_DIR/libopencv_datasets.so \
+#$$OPENCV_LIB_DIR/libopencv_dnn.so \
+#$$OPENCV_LIB_DIR/libopencv_dpm.so \
+#$$OPENCV_LIB_DIR/libopencv_face.so \
+#$$OPENCV_LIB_DIR/libopencv_features2d.so \
+#$$OPENCV_LIB_DIR/libopencv_flann.so \
+#$$OPENCV_LIB_DIR/libopencv_freetype.so \
+#$$OPENCV_LIB_DIR/libopencv_fuzzy.so \
+#$$OPENCV_LIB_DIR/libopencv_highgui.so \
+#$$OPENCV_LIB_DIR/libopencv_imgcodecs.so \
+#$$OPENCV_LIB_DIR/libopencv_imgproc.so \
+#$$OPENCV_LIB_DIR/libopencv_ml.so \
+#$$OPENCV_LIB_DIR/libopencv_objdetect.so \
+#$$OPENCV_LIB_DIR/libopencv_optflow.so \
+#$$OPENCV_LIB_DIR/libopencv_phase_unwrapping.so \
+#$$OPENCV_LIB_DIR/libopencv_photo.so \
+#$$OPENCV_LIB_DIR/libopencv_plot.so \
+#$$OPENCV_LIB_DIR/libopencv_reg.so \
+#$$OPENCV_LIB_DIR/libopencv_rgbd.so \
+#$$OPENCV_LIB_DIR/libopencv_saliency.so \
+#$$OPENCV_LIB_DIR/libopencv_shape.so \
+#$$OPENCV_LIB_DIR/libopencv_stereo.so \
+#$$OPENCV_LIB_DIR/libopencv_stitching.so \
+#$$OPENCV_LIB_DIR/libopencv_structured_light.so \
+#$$OPENCV_LIB_DIR/libopencv_superres.so \
+#$$OPENCV_LIB_DIR/libopencv_surface_matching.so \
+#$$OPENCV_LIB_DIR/libopencv_text.so \
+#$$OPENCV_LIB_DIR/libopencv_tracking.so \
+#$$OPENCV_LIB_DIR/libopencv_video.so \
+#$$OPENCV_LIB_DIR/libopencv_videoio.so \
+#$$OPENCV_LIB_DIR/libopencv_videostab.so \
+#$$OPENCV_LIB_DIR/libopencv_xfeatures2d.so \
+#$$OPENCV_LIB_DIR/libopencv_ximgproc.so \
+#$$OPENCV_LIB_DIR/libopencv_xobjdetect.so \
+#$$OPENCV_LIB_DIR/libopencv_xphoto.so
+LIBS += $$OPENCV_LIB_DIR/libopencv_calib3d.so \
+$$OPENCV_LIB_DIR/libopencv_contrib.so \
+$$OPENCV_LIB_DIR/libopencv_core.so \
+$$OPENCV_LIB_DIR/libopencv_features2d.so \
+$$OPENCV_LIB_DIR/libopencv_flann.so \
+$$OPENCV_LIB_DIR/libopencv_gpu.so \
+$$OPENCV_LIB_DIR/libopencv_highgui.so \
+$$OPENCV_LIB_DIR/libopencv_imgproc.so \
+$$OPENCV_LIB_DIR/libopencv_legacy.so \
+$$OPENCV_LIB_DIR/libopencv_ml.so \
+$$OPENCV_LIB_DIR/libopencv_objdetect.so \
+$$OPENCV_LIB_DIR/libopencv_ocl.so \
+$$OPENCV_LIB_DIR/libopencv_photo.so \
+$$OPENCV_LIB_DIR/libopencv_stitching.so \
+$$OPENCV_LIB_DIR/libopencv_superres.so \
+$$OPENCV_LIB_DIR/libopencv_ts.so \
+$$OPENCV_LIB_DIR/libopencv_video.so \
+$$OPENCV_LIB_DIR/libopencv_videostab.so
 
 
 #include caffe
 # set caffe
-INCLUDEPATH += /home/wangpengcheng/caffe/caffe/include \
-               /home/wangpengcheng/caffe/caffe/src  \
-               /home/wangpengcheng/caffe/caffe/distribute/include \
-
-LIBS += -L /home/wangpengcheng/caffe/caffe/build/lib
+CAFFE_ROOT="/caffe" #/home/wangpengcheng/caffe/caffe
+INCLUDEPATH += $$CAFFE_ROOT/include \
+               $$CAFFE_ROOT/src  \
+               $$CAFFE_ROOT/include \
+CAFFE_LIB_DIR="/caffe/build/lib" #/home/wangpengcheng/caffe/caffe/build/lib
+LIBS += -L $$CAFFE_LIB_DIR
 LIBS += -lcaffe
 
 # other dependencies
-LIBS += -lglog -lgflags -lprotobuf -lboost_system -lboost_thread -llmdb -lleveldb -lstdc++  -lcblas -latlas
+LIBS += -lglog -lgflags -lprotobuf -lboost_system -lboost_thread -llmdb -lleveldb -lstdc++  #-lcblas -latlas
 
 
 #set cuda
