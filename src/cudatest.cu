@@ -2,23 +2,19 @@
 
 // CUDA-C includes
 #include <cuda.h>
-
 #include <cuda_runtime.h>
+#include <stdio.h>
 
-    #include <stdio.h>
-
-    extern "C"
+extern "C" {
 //Adds two arrays
-    void runCudaPart();
-
-
-    __global__ void addAry( int * ary1, int * ary2 )
-    {
+void runCudaPart();
+__global__ void addAry( int * ary1, int * ary2 )
+{
     int indx = threadIdx.x;
     ary1[ indx ] += ary2[ indx ];
 }
 
-
+}
 // Main cuda function
 
 void runCudaPart() {
@@ -33,7 +29,10 @@ void runCudaPart() {
         ary2[i] = 2*i;
         res[i]=0;
     }
-    int * d_ary1, *d_ary2;
+    for(int i=0;i<32;++i) {
+        printf( "ary1[%d] = %d\n,ary2[%d]= %d", i, ary1[i],i,ary2[i]);
+    }
+    int *d_ary1, *d_ary2;
     cudaMalloc((void**)&d_ary1, 32*sizeof(int));
     cudaMalloc((void**)&d_ary2, 32*sizeof(int));
     cudaMemcpy((void*)d_ary1, (void*)ary1, 32*sizeof(int), cudaMemcpyHostToDevice);
@@ -45,4 +44,9 @@ void runCudaPart() {
         printf( "result[%d] = %d\n", i, res[i]);
     cudaFree(d_ary1);
     cudaFree(d_ary2);
+}
+
+int main(int argc,char* argv[]) {
+    runCudaPart();
+    return 0;
 }

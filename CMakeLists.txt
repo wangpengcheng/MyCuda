@@ -91,13 +91,15 @@ set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
 CUDA_ADD_EXECUTABLE(cudaQuery
     ./src/cudaQuery.cu
 )
-
-add_executable(
-    ${RPOJECT_NAME}
-    ${PROJECT_SOURCE_DIR}/main.cpp
+CUDA_ADD_EXECUTABLE(cudatest
+    ./src/cudatest.cu
 )
+# add_executable(
+#     ${RPOJECT_NAME}
+#     ${PROJECT_SOURCE_DIR}/main.cpp
+# )
 
 
 # 链接外部库，按需
-TARGET_LINK_LIBRARIES(cudaQuery  ${CUDA_cudadevrt_LIBRARY})
-
+target_link_libraries(cudaQuery ${CUDA_cudadevrt_LIBRARY})
+target_link_libraries(cudatest ${CUDA_cudadevrt_LIBRARY})

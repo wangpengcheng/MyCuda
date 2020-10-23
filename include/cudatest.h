@@ -1,9 +1,9 @@
 #ifndef CUDA_TEST_H
 #define CUDA_TEST_H
 //include cuda
-#include "cuda_runtime.h"
-#include "device_launch_parameters.h"
-#include "malloc.h"
+#include <cuda_runtime.h>
+#include <device_launch_parameters.h>
+#include <malloc.h>
 #include <stdio.h>
 
 #define  HEIGHT 10
