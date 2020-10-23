@@ -20,11 +20,11 @@ if(CMAKE_BUILD_TYPE MATCHES "Debug")
         -Wall
         -Wno-unused-parameter
     )
-    set(
+    set(CUDA_NVCC_FLAGS
         ${CUDA_NVCC_FLAGS}
         -g
-        -Wall
         -Wno-unused-parameter
+        
     )
 else()
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O3")
@@ -41,21 +41,21 @@ if (NOT CUDA_FOUND)
 endif(NOT CUDA_FOUND)
 
 # C++和CUDA的编译参数，可选。
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-SET(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -gencode arch=compute_61,code=sm_61 -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -gencode arch=compute_61,code=sm_61")
 # 头文件路径，按需
-INCLUDE_DIRECTORIES(
+include_directories(
     ${PROJECT_SOURCE_DIR}/include
     ${CUDA_INCLUDE_DIRS}
-    )
+)
 # set(SRC_LIST 
     # ${PROJECT_SOURCE_DIR}/
 # )
 # 库文件路径，按需
-LINK_DIRECTORIES(
+link_directories(
     /usr/lib
     /usr/local/lib
-    )
+)
 
 
 set(OUT_ROOT_DIR ${PROJECT_SOURCE_DIR}/install/lib)
