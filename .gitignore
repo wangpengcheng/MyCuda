@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
 
@@ -74,11 +73,3 @@ Thumbs.db
 
 # build
 /build
-=======
-*.i
-*.ii
-*.gpu
-*.ptx
-*.cubin
-*.fatbin
->>>>>>> 9fd66ca1648d3e7d4e623664ef891a21e7d4f6a5
