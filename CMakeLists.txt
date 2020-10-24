@@ -23,7 +23,7 @@ if(CMAKE_BUILD_TYPE MATCHES "Debug")
     set(CUDA_NVCC_FLAGS
         ${CUDA_NVCC_FLAGS}
         -g
-        -Wno-unused-parameter
+#        -Wno-unused-parameter
         
     )
 else()
@@ -42,7 +42,7 @@ endif(NOT CUDA_FOUND)
 
 # C++和CUDA的编译参数，可选。
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -gencode arch=compute_61,code=sm_61")
+set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -gencode arch=compute_30,code=sm_30 -gencode arch=compute_35,code=sm_35 -gencode arch=compute_37,code=sm_37 -gencode arch=compute_50,code=sm_50 -gencode arch=compute_52,code=sm_52 -gencode arch=compute_60,code=sm_60 -gencode arch=compute_70,code=sm_70 -gencode arch=compute_70,code=compute_70")
 # 头文件路径，按需
 include_directories(
     ${PROJECT_SOURCE_DIR}/include
