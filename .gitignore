@@ -73,3 +73,5 @@ Thumbs.db
 
 # build
 /build
+# install 
+/install
